@@ -13,6 +13,7 @@ export type IPost = {
   number: number
   title: string
   body: string
+  preview: string
   user: IUser
   labels: ILabel[]
   created_at: string

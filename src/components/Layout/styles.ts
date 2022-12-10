@@ -5,6 +5,10 @@ export const Content = styled.div`
   max-width: 864px;
   margin: 0 auto;
   margin-top: 296px;
+
+  @media screen and (max-width: 864px) {
+    padding: 0 1rem;
+  }
 `
 export const HeaderBackground = styled.div`
   z-index: -1;

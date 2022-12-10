@@ -9,6 +9,11 @@ export const Container = styled.div`
   width: 70vw;
   margin-inline: auto;
   max-width: 864px;
+
+  @media screen and (max-width: 864px) {
+    width: 100%;
+    max-width: 100%;
+  }
 `
 export const Header = styled.div`
   position: relative;

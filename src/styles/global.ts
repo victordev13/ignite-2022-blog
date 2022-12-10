@@ -21,7 +21,6 @@ export const GlobalStyle = createGlobalStyle`
 
   body, input, textarea, button {
     font: 400 1rem 'Nunito', sans-serif;
-    border-color: ${(props) => props.theme.colors.baseBorder};
   }
 
   h1 {
@@ -36,6 +35,10 @@ export const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.colors.baseSpan}
   }
 
+  a {
+    text-decoration: none;
+  }
+
   input {
     color: ${(props) => props.theme.colors.baseInput}
   }
@@ -43,15 +46,4 @@ export const GlobalStyle = createGlobalStyle`
   label {
     color: ${(props) => props.theme.colors.baseLabel}
   }
-
-  /* baseTitle: '#e7edf4',
-    baseSubtitle: '#c4d4e3',
-    baseText: '#afc2d4',
-    baseSpan: '#7b96b2',
-    baseLabel: '#3a536b',
-    baseBorder: '#1c2f41',
-    basePost: '#112131',
-    baseProfile: '#0b1b2b',
-    baseBackground: '#071422',
-    baseInput: '#040f1a', */
 `

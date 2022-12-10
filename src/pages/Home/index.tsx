@@ -3,7 +3,14 @@ import { FaBuilding, FaGithub, FaMapMarkerAlt } from 'react-icons/fa'
 import { HeaderTitle } from '../../components/HeaderTitle'
 import { fetchPosts } from '../../services/blog'
 import { IPost } from '../../types/post'
-import { HeaderContainerContent, HeaderContainerLinksContent } from './styles'
+import Post from '../../components/Post'
+import {
+  ContentContainer,
+  HeaderContainerContent,
+  HeaderContainerLinksContent,
+  PostsContainer,
+  SearchBarContainer,
+} from './styles'
 
 export default function Home() {
   const [posts, setPosts] = useState<IPost[] | null>(null)
@@ -15,6 +22,8 @@ export default function Home() {
     }
     fetchPost()
   }, [])
+
+  const postsCount = posts?.length ?? 0
 
   return (
     <>
@@ -46,8 +55,11 @@ export default function Home() {
                 >
                   victordev13
                 </HeaderTitle.FooterItem>
-                <HeaderTitle.FooterItem icon={<FaBuilding />}>
-                  Gênese cr
+                <HeaderTitle.FooterItem
+                  icon={<FaBuilding />}
+                  linkTo="https://www.linkedin.com/company/g%C3%AAnese-creative"
+                >
+                  Gênese.cr
                 </HeaderTitle.FooterItem>
                 <HeaderTitle.FooterItem icon={<FaMapMarkerAlt />}>
                   Pinheiros-ES
@@ -57,7 +69,28 @@ export default function Home() {
           </HeaderContainerContent>
         </HeaderTitle.Content>
       </HeaderTitle.Root>
-      <div>{posts?.map((p) => p.body)}</div>
+      <ContentContainer>
+        <SearchBarContainer>
+          <div>
+            <h2>Publicações</h2>
+            <span>{postsCount} publicações</span>
+          </div>
+          <div>
+            <input type="text" placeholder="Buscar conteúdo" />
+          </div>
+        </SearchBarContainer>
+        <PostsContainer>
+          {posts?.map((post) => (
+            <Post
+              number={post.number}
+              key={post.number}
+              title={post.title}
+              content={post.preview}
+              publishedAt={new Date(post.updated_at)}
+            />
+          ))}
+        </PostsContainer>
+      </ContentContainer>
     </>
   )
 }
