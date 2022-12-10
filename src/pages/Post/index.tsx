@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { FaGithub } from 'react-icons/fa'
+import { FaComment, FaGithub } from 'react-icons/fa'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import { useParams } from 'react-router-dom'
 import remarkGfm from 'remark-gfm'
@@ -31,7 +31,9 @@ export default function Post() {
         <>
           <HeaderTitle.Root fixedHeight={178}>
             <HeaderTitle.Header showBackButton>
-              <HeaderTitle.Link to={post.url}>Ver no Github</HeaderTitle.Link>
+              <HeaderTitle.Link to={post.html_url}>
+                Ver no Github
+              </HeaderTitle.Link>
             </HeaderTitle.Header>
             <HeaderTitle.Content>
               <h1>{post.title}</h1>
@@ -48,6 +50,9 @@ export default function Post() {
                   {`há ${publishedAt} ${publishedAt === 1 ? 'dia' : 'dias'}`}
                 </HeaderTitle.FooterItem>
               )}
+              <HeaderTitle.FooterItem icon={<FaComment />}>
+                {post.comments + ' comentários'}
+              </HeaderTitle.FooterItem>
             </HeaderTitle.Footer>
           </HeaderTitle.Root>
           <Content>

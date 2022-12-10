@@ -10,7 +10,7 @@ export type IUser = {
 }
 
 export type IPost = {
-  url: string
+  html_url: string
   number: number
   title: string
   body: string
@@ -19,4 +19,5 @@ export type IPost = {
   labels: ILabel[]
   created_at: string
   updated_at: string
+  comments: number
 }
