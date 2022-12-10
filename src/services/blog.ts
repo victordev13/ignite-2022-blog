@@ -14,7 +14,7 @@ export const fetchPosts = async (query?: string) => {
   return data
 }
 
-export const fetchPostDetail = async (number: number) => {
+export const fetchPostDetail = async (number: number | string) => {
   const { data } = await api.get<IPost>(`/repos/${REPO}/issues/` + number)
 
   return data

@@ -7,11 +7,18 @@ import {
   BackButton,
   FooterItem,
   FooterItemLink,
+  FooterContainer,
 } from './styles'
 import { FaAngleLeft, FaExternalLinkAlt } from 'react-icons/fa'
 
-function HeaderTitleRoot({ children }: { children: ReactNode }) {
-  return <Container>{children}</Container>
+function HeaderTitleRoot({
+  children,
+  fixedHeight,
+}: {
+  children: ReactNode
+  fixedHeight?: number
+}) {
+  return <Container fixedHeight={fixedHeight}>{children}</Container>
 }
 
 interface HeaderTitleLinkProps {
@@ -83,10 +90,14 @@ function HeaderTitleFooterItem({
   )
 }
 
+function HeaderTitleFooter({ children }: { children: ReactNode }) {
+  return <FooterContainer>{children}</FooterContainer>
+}
 export const HeaderTitle = {
   Root: HeaderTitleRoot,
   Link: HeaderTitleLink,
   Header: HeaderTitleHeader,
   Content: HeaderTitleContent,
+  Footer: HeaderTitleFooter,
   FooterItem: HeaderTitleFooterItem,
 }

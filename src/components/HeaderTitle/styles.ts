@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Link as BaseLink } from 'react-router-dom'
 
-export const Container = styled.div`
+export const Container = styled.div<{ fixedHeight?: number }>`
   margin-top: -88px;
   background-color: ${(props) => props.theme.colors.baseProfile};
   padding: 2rem 2.5rem;
@@ -9,6 +9,14 @@ export const Container = styled.div`
   width: 70vw;
   margin-inline: auto;
   max-width: 864px;
+
+  position: relative;
+
+  ${(props) =>
+    props.fixedHeight &&
+    css`
+      height: ${props.fixedHeight}px;
+    `}
 
   @media screen and (max-width: 864px) {
     width: 100%;
@@ -61,7 +69,16 @@ export const BackButton = styled(BaseLink)`
 `
 
 export const HeaderContent = styled.div``
-export const HeaderFooter = styled.div``
+export const FooterContainer = styled.div`
+  margin-top: 1.5rem;
+
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+
+  position: absolute;
+  bottom: 2rem;
+`
 
 export const FooterItem = styled.span`
   display: flex;

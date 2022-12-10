@@ -10,6 +10,7 @@ export type IUser = {
 }
 
 export type IPost = {
+  url: string
   number: number
   title: string
   body: string
