@@ -1,9 +1,12 @@
 {
   "name": "03-blog",
+  "homepage": "https://victordev13.github.io/ignite-2022-blog",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
@@ -30,6 +33,7 @@
     "@types/styled-components": "^5.1.26",
     "@vitejs/plugin-react": "^2.2.0",
     "eslint": "^8.28.0",
+    "gh-pages": "^4.0.0",
     "typescript": "^4.6.4",
     "vite": "^3.2.3"
   }

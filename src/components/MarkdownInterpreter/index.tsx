@@ -16,6 +16,7 @@ export const MarkdownInterpreter = ({ children }: { children: string }) => (
         return (
           <SyntaxHighlighter
             language={match ? match[1] : ''}
+            // @ts-ignore
             style={atomOneDark}
             PreTag="section"
             {...props}
