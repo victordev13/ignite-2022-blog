@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import { FaComment, FaGithub } from 'react-icons/fa'
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import { useParams } from 'react-router-dom'
-import remarkGfm from 'remark-gfm'
 import { HeaderTitle } from '../../components/HeaderTitle'
+import { MarkdownInterpreter } from '../../components/MarkdownInterpreter'
 import { daysAgo } from '../../lib/date'
 import { fetchPostDetail } from '../../services/blog'
 import { IPost } from '../../types/post'
@@ -56,9 +55,7 @@ export default function Post() {
             </HeaderTitle.Footer>
           </HeaderTitle.Root>
           <Content>
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {post.body}
-            </ReactMarkdown>
+            <MarkdownInterpreter>{post.body}</MarkdownInterpreter>
           </Content>
         </>
       ) : (

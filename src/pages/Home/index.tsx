@@ -16,11 +16,10 @@ export default function Home() {
   const [posts, setPosts] = useState<IPost[] | null>(null)
 
   useEffect(() => {
-    const fetchPost = async () => {
+    ;(async () => {
       const postsData = await fetchPosts()
       setPosts(postsData.items)
-    }
-    fetchPost()
+    })()
   }, [])
 
   const postsCount = posts?.length ?? 0

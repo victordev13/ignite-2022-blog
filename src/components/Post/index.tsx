@@ -1,7 +1,6 @@
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import { Link } from 'react-router-dom'
-import remarkGfm from 'remark-gfm'
 import { daysAgo } from '../../lib/date'
+import { MarkdownInterpreter } from '../MarkdownInterpreter'
 import { Container } from './styles'
 
 interface PostProps {
@@ -29,7 +28,7 @@ export default function Post({
           </small>
         </div>
         <p>
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+          <MarkdownInterpreter>{content}</MarkdownInterpreter>
         </p>
       </Container>
     </Link>

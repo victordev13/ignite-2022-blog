@@ -1,0 +1,31 @@
+.mdapp ul {
+  padding: revert;
+}
+
+.mdapp pre {
+  margin-block: 20px;
+}
+
+.mdapp code {
+  font-family: monospace, sans-serif;
+}
+
+/* width */
+.mdapp ::-webkit-scrollbar {
+  height: 10px;
+}
+
+/* Track */
+.mdapp ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.mdapp ::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+/* Handle on hover */
+.mdapp ::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
