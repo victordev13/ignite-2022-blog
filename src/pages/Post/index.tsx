@@ -9,7 +9,13 @@ import { IPost } from '../../types/post'
 import { Container, Content } from './styles'
 
 export default function Post() {
-  const [post, setPost] = useState<IPost | null>(null)
+  const [post, setPost] = useState<IPost>({
+    updated_at: '',
+    html_url: '',
+    title: '',
+    comments: 0,
+    body: '',
+  } as IPost)
 
   const { number } = useParams()
 

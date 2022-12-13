@@ -1,28 +1,28 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { FaBuilding, FaGithub, FaMapMarkerAlt } from 'react-icons/fa'
 import { HeaderTitle } from '../../components/HeaderTitle'
 import { fetchPosts } from '../../services/blog'
 import { IPost } from '../../types/post'
-import Post from '../../components/Post'
 import {
   ContentContainer,
   HeaderContainerContent,
   HeaderContainerLinksContent,
-  PostsContainer,
-  SearchBarContainer,
 } from './styles'
+import PostGrid from '../../components/PostGrid'
 
 export default function Home() {
   const [posts, setPosts] = useState<IPost[] | null>(null)
 
-  useEffect(() => {
-    ;(async () => {
-      const postsData = await fetchPosts()
-      setPosts(postsData.items)
-    })()
+  const loadPosts = useCallback(async () => {
+    const postsData = await fetchPosts()
+    setPosts(postsData.items)
   }, [])
 
-  const postsCount = posts?.length ?? 0
+  useEffect(() => {
+    if (!posts) {
+      loadPosts()
+    }
+  }, [loadPosts, posts])
 
   return (
     <>
@@ -68,28 +68,7 @@ export default function Home() {
           </HeaderContainerContent>
         </HeaderTitle.Content>
       </HeaderTitle.Root>
-      <ContentContainer>
-        <SearchBarContainer>
-          <div>
-            <h2>Publicações</h2>
-            <span>{postsCount} publicações</span>
-          </div>
-          <div>
-            <input type="text" placeholder="Buscar conteúdo" />
-          </div>
-        </SearchBarContainer>
-        <PostsContainer>
-          {posts?.map((post) => (
-            <Post
-              number={post.number}
-              key={post.number}
-              title={post.title}
-              content={post.preview}
-              publishedAt={new Date(post.updated_at)}
-            />
-          ))}
-        </PostsContainer>
-      </ContentContainer>
+      <ContentContainer>{posts && <PostGrid posts={posts} />}</ContentContainer>
     </>
   )
 }
